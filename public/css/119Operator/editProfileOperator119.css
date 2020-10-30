@@ -1,0 +1,95 @@
+body{
+	background-image: url("../../img/bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: sans-serif;
+	background-attachment: fixed;
+}
+
+#error1,#error2{
+    color: red;
+}
+
+.hidden{
+	display: none;
+}
+
+.proPic .picture{
+	width: 25vw;
+	height: 25vw;
+	border-style: solid;
+  	border-width: 2px;
+  	border-color: black;
+  	background-color: rgb(192,192,192,0.6);
+}
+
+.breadcrum{
+	color: white;
+	background-color: rgb(128,0,0,0.9);
+	padding: 5px 0px 5px 10px;
+}
+
+.form{
+	background-color: rgb(255,255,255,0.6);
+	margin: 10px;
+}
+
+.info{
+	padding: 20px 0px 20px 0px;
+}
+
+.proPic img{
+	width: 25vw;
+	height: 25vw;
+	border-style: solid;
+  	border-width: 2px;
+  	border-color: black;
+}
+
+.proPic{
+	width: 30%;
+}
+
+.labels{
+	width: 20%;
+}
+
+.inputs{
+	width: 50%;
+}
+
+.form .info .labels label{
+	margin: 13px;
+	display: block;
+	font-size: 110%;
+	font-weight: bold;
+}
+
+.form .info .inputs input{
+	margin: 10px;
+	display: block;
+	width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255,255,255,0.3);
+    box-sizing: border-box;
+}
+
+.form .info .save input[type=submit]{
+	float: right;
+    width: 20%;
+    background-color: rgb(0,191,255,0.6);
+    border: 1px solid black;
+    padding: 11px 20px;
+    margin: 8px 0;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 120%;
+}
+
+.form .info .save input[type=submit]:hover{
+	background-color: rgb(0,191,255,0.9);
+}
