@@ -12,46 +12,42 @@
 	<div class="breadcrum">
 		Edit Profile
 	</div>
-
 	<div class="form">
 		<center>
-			<form action="updateprofileoperator1990" method="post" id="editProfile">
-				<table class="info">
-					<tr>
-						<td class="proPic">
-							<canvas class="picture" id="picture">
+			<form method="post" id="editProfile">
+				<div class="row">
+  					<div class="column1">
+  						<canvas class="picture" id="picture">
 								
-							</canvas>
-						</td>
-						<td class="labels">
-							<label>First Name</label><br>
-							<label>Last Name</label><br>
-							<label>Password</label><br>
-							<label>Re-enter Password</label><br>
-						</td>
-						<td class="inputs">
-							<?php foreach($data['admin'] as $operatorInfo){ ?>
-							<input type="text" name="firstName" id="firstName" value="<?php echo $operatorInfo->firstName; ?>"><br>
-							<input type="text" name="lastName" id="lastName" value="<?php echo $operatorInfo->lastName; ?>"><br>
-							<input type="password" name="password1" id="password1"value="<?php echo $operatorInfo->password; ?>"><br>
-							<input type="password" name="password2" id="password2" value="<?php echo $operatorInfo->password; ?>"><br>
-							<?php } ?>
-							<p class="hidden" id="error1">Passwords do not match!</p>
-							<p class="hidden" id="error2">Please, fill the password feilds!</p>
-						</td>
-					</tr>
-					<tr class="save">
-						<td colspan="3">
-							<input type="submit" value="Save" name="submit" id="submit">
-						</td>
-					</tr>
-				</table>
+						</canvas>
+  					</div>
+  					<div class="column2">
+    	  				<label>First Name</label><br>
+						<label>Last Name</label><br>
+						<label>Password</label><br>
+						<label>Re-enter Password</label><br>
+    	  			</div>
+    	  			<div class="column3">
+    	  				<?php foreach($data['admin'] as $adminInfo){ ?>
+    	  				<label class="lab">First Name</label>
+						<input type="text" name="firstName" id="firstName" value="<?php echo $adminInfo->firstName ?>"><br>
+						<label class="lab">Last Name</label>
+						<input type="text" name="lastName" id="lastName" value="<?php echo $adminInfo->lastName ?>"><br>
+						<label class="lab">Password</label>
+						<input type="password" name="password1" id="password1"value="<?php echo $adminInfo->password ?>"><br>
+						<label class="lab">Re-enter Password</label>
+						<input type="password" name="password2" id="password2" value="<?php echo $adminInfo->password ?>"><br>
+						<?php } ?>
+						<p class="hide" id="err">Error</p>
+						<input type="submit" value="Save" name="submit" id="submit">
+    	  			</div>
+				</div>
 			</form>
 		</center>
 	</div>
 	<script type="text/javascript" src="../javascript/jquery.js"></script>
 	<script type="text/javascript" src="../javascript/jquery.sticky.js"></script>
 	<script type="text/javascript" src="../javascript/navigation.js"></script>
-	<script type="text/javascript" src="../javascript/editProfile.js"></script>
+	<script type="text/javascript" src="../javascript/editProfileOperator1990.js"></script>
 </body>
 </html>

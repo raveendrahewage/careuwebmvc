@@ -14,7 +14,7 @@
 	</div>
 	<div class="form">
 		<center>
-			<form action="" method="post">
+			<form action="" method="post" id="formOperator119">
 				<div class="row">
 			  		<div class="column1">
 			  			<canvas class="picture" id="picture">
@@ -38,7 +38,7 @@
 						<label class="lab">Password</label>
 						<input type="password" name="password1" id="password1"><br>
 						<label class="lab" >Re-enter Password</label>
-						<input type="text" name="password2" id="password2"><br>
+						<input type="password" name="password2" id="password2"><br>
 						<p class="hide" id="err">Error</p>
 						<input type="submit" value="Create Account" name="submit" id="submit">
 			  		</div>

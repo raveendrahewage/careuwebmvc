@@ -21,13 +21,10 @@
 				<p class="name1"><b>care</b></p><p class="name2"><b>U</b></p>
 			</div>
 			<div class="loginform">
-				<p class="hidden" id="error1">Invalid username or password. Try again!</p>
-				<p class="hidden" id="error2">Invalid username!</p>
-				<p class="hidden" id="error3">Username and password cannot be empty!</p>
-
-	  			<form action="careu/home" method="post" id="logIn">
-	    			<input type="text" id="username" name="username" placeholder="Username"><br>
-	    			<input type="password" id="password" name="password" placeholder="Password"><br><br>
+			<p class="hide" id="err">Error</p>
+				<form  method="post" id="logIn">
+					<input type="text" id="username" name="username" placeholder="Username"><br>
+					<input type="password" id="password" name="password" placeholder="Password"><br><br>
 	    			<input type="submit" value="Log In" name="submit" id="submit"><br><br>
 	    			<a href="verifyController/about" class="forgotpassword">Forgot password?</a><br>
 	 			</form>

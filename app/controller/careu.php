@@ -27,39 +27,59 @@ class careu extends Controller
         $this->view('pages/index');
     }
 
-    public function home()
+    public function verify()
     {
-
-        session_start();
-        $_SESSION['userName']=$_POST['username'];
-        $userInfo=$this->userModel->getUser($_POST['username'],$_POST['password']);
-
-        if($userInfo)
-        {   
-            if(strpos($_POST['username'], "admin"))
+        $connection = mysqli_connect('localhost','root','','careu');
+        $userName=mysqli_real_escape_string($connection,$_POST['username']);
+        $password=mysqli_real_escape_string($connection,$_POST['password']);
+          
+        if(strpos($userName, "admin"))
+        {
+            $userInfo=$this->userModel->getUserAdmin($userName,$password);
+            if($userInfo)
             {
-                $this->view('pages/includes/adminheader');
-                $this->view('pages/admin/home');
-                $this->view('pages/includes/footer');
+                session_start();
+                $_SESSION['userName']=$userName;
+                echo "success";
             }
-            else if(strpos($_POST['username'], "119"))
+            else
             {
-                $this->view('pages/includes/119OperatorHeader');
-                $this->view('pages/119Operator/home');
-                $this->view('pages/includes/footer');
+                echo "failed";
             }
-            else if(strpos($_POST['username'], "1990"))
+        }
+        else if(strpos($userName, "119"))
+        {
+            $userInfo=$this->userModel->getUser119($userName,$password);
+            if($userInfo)
             {
-                $this->view('pages/includes/1990OperatorHeader');
-                $this->view('pages/1990Operator/home');
-                $this->view('pages/includes/footer');
-            }   
+                session_start();
+                $_SESSION['userName']=$userName;
+                echo "success";
+            }
+            else
+            {
+                echo "failed";
+            }
+            
+        }
+        else if(strpos($userName, "1990"))
+        {
+            $userInfo=$this->userModel->getUser1990($userName,$password);
+            if($userInfo)
+            {
+                session_start();
+                $_SESSION['userName']=$userName;
+                echo "success";
+            }
+            else
+            {
+                echo "failed";
+            }
         }
         else
         {
-            $this->view('pages/index');
-            session_destroy();
-        }
+            echo "failed";
+        }   
     }
 
 // ADMIN CONTROLLER FUNCTIONS-----------------------------------------------------------------------------------------------
@@ -102,17 +122,20 @@ class careu extends Controller
     public function updateprofileadmin()
     {
         session_start();
-        $result=$this->userModel->updateAdmin($_POST['firstName'],$_POST['lastName'],$_SESSION['userName'],$_POST['password1']);
+        $connection = mysqli_connect('localhost','root','','careu');
+        $firstName=mysqli_real_escape_string($connection,$_POST['firstName']);
+        $lastName=mysqli_real_escape_string($connection,$_POST['lastName']);
+        $userName=$_SESSION['userName'];
+        $password=mysqli_real_escape_string($connection,$_POST['password1']);
+        $result=$this->userModel->updateAdmin($firstName,$lastName,$userName,$password);
 
         if($result)
         {
-            $this->view('pages/includes/adminheader');
-            $this->view('pages/admin/home');
-            $this->view('pages/includes/footer');
+            echo "success";
         }
         else
         {
-            echo $_SESSION['userName'];
+            echo "failed";
         }
     }
 
@@ -162,6 +185,25 @@ class careu extends Controller
         $this->view('pages/includes/adminheader');
         $this->view('pages/admin/reports');
         $this->view('pages/includes/footer');
+    }
+
+    public function createoperator119()
+    {
+        $connection = mysqli_connect('localhost','root','','careu');
+        $userName=mysqli_real_escape_string($connection,$_POST['userName']);
+        $firstName=mysqli_real_escape_string($connection,$_POST['firstName']);
+        $lastName=mysqli_real_escape_string($connection,$_POST['lastName']);
+        $password=mysqli_real_escape_string($connection,$_POST['password1']);
+        $result=$this->userModel->createOperator119($userName,$firstName,$lastName,$password);
+
+        if($result)
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "failed";
+        }
     }
 
 // 119 OPERATOR CONTROLLER FUNCTIONS-----------------------------------------------------------------------------------------
@@ -218,17 +260,20 @@ class careu extends Controller
     public function updateprofileoperator119()
     {
         session_start();
-        $result=$this->userModel->updateOperator119($_POST['firstName'],$_POST['lastName'],$_SESSION['userName'],$_POST['password1']);
+        $connection = mysqli_connect('localhost','root','','careu');
+        $firstName=mysqli_real_escape_string($connection,$_POST['firstName']);
+        $lastName=mysqli_real_escape_string($connection,$_POST['lastName']);
+        $userName=$_SESSION['userName'];
+        $password=mysqli_real_escape_string($connection,$_POST['password1']);
+        $result=$this->userModel->updateOperator119($firstName,$lastName,$userName,$password);
 
         if($result)
         {
-            $this->view('pages/includes/119OperatorHeader');
-            $this->view('pages/119Operator/home');
-            $this->view('pages/includes/footer');
+            echo "success";
         }
         else
         {
-            echo $_SESSION['userName'];
+            echo "failed";
         }
     }
 
@@ -279,7 +324,7 @@ class careu extends Controller
     public function editprofileoperator1990()
     {
         session_start();
-        $operatorInfo=$this->userModel->getOperator119($_SESSION['userName']);
+        $operatorInfo=$this->userModel->getOperator1990($_SESSION['userName']);
         $data = ['admin' => $operatorInfo];
 
         if($operatorInfo)
@@ -293,17 +338,20 @@ class careu extends Controller
     public function updateprofileoperator1990()
     {
         session_start();
-        $result=$this->userModel->updateOperator119($_POST['firstName'],$_POST['lastName'],$_SESSION['userName'],$_POST['password1']);
+        $connection = mysqli_connect('localhost','root','','careu');
+        $firstName=mysqli_real_escape_string($connection,$_POST['firstName']);
+        $lastName=mysqli_real_escape_string($connection,$_POST['lastName']);
+        $userName=$_SESSION['userName'];
+        $password=mysqli_real_escape_string($connection,$_POST['password1']);
+        $result=$this->userModel->updateOperator119($firstName,$lastName,$userName,$password);
 
         if($result)
         {
-            $this->view('pages/includes/119OperatorHeader');
-            $this->view('pages/119Operator/home');
-            $this->view('pages/includes/footer');
+            echo "success";
         }
         else
         {
-            echo $_SESSION['userName'];
+            echo "failed";
         }
     }
 

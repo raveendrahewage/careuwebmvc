@@ -16,7 +16,7 @@
 
 	<div class="form">
 		<center>
-			<form action="updateprofileadmin" method="post" id="editProfile">
+			<form method="post" id="editProfile">
 				<div class="row">
   					<div class="column1">
   						<canvas class="picture" id="picture">
@@ -50,7 +50,7 @@
 
 	<script type="text/javascript" src="../javascript/jquery.js"></script>
 	<script type="text/javascript" src="../javascript/jquery.sticky.js"></script>
-	<script type="text/javascript" src="../javascript/editProfile.js"></script>
+	<script type="text/javascript" src="../javascript/editProfileAdmin.js"></script>
 	<script type="text/javascript" src="../javascript/navigation.js"></script>
 
 	<script>
